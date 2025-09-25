@@ -31,6 +31,17 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void close() {
+		
+		try {
+			this.conn.close();
+		} catch (Exception e) {
+			System.out.println("UserDAO.close()");
+			e.printStackTrace();
+		}
+		
+	}
 
 	public String get(String id) {
 		//queryparamtokenReturn

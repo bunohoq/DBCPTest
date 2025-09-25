@@ -1,0 +1,22 @@
+DBCP > Database Connection Pool
+
+스프링 > Commons DBCP2 or HikariCP
+
+Tomcat JDBX Connection Pool > 톰캣이 제공하는 DBCP
+
+1. 라이브러리 추가
+		- WEB-INF > lib > ojdbc8.jar
+		- apache-tomcat-9.0.108 > lib > ojdbc8.jar
+		
+2. servers > Tomcat v9.0 Server at localhost-config
+		- 톰캣 인스턴스
+		- context.xml > DBCP 코드 추가
+		
+파일
+- com.test.java
+		- ConnectionTest.java > DBCP를 사용해서 DB연결을 어떻게 하는지?
+													> DBUtil.open()과 동일한 작업을 어떻게 하는지?
+		- DBCPTest.java > DAO 테스트
+		
+- com.test.java.model
+		- UserDAO.java > DBCP 기반의 DAO
