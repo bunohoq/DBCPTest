@@ -1,0 +1,15 @@
+JNDI, Java Naming and Directory Interface
+
+<Resource 
+		name="jdbc/pool" 
+		auth="Container"
+		type="javax.sql.DataSource"
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+		initialSize="20" 
+		maxActive="20" 
+		maxIdle="10" 
+		maxWaitMillis="10000"
+		username="server" 
+		password="java1234"
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@localhost:1521:XE" />
