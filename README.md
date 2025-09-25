@@ -64,10 +64,37 @@ apache-tomcat-9.0.108/
         maxWaitMillis="3000"/>
 </Context>
 
+```
 
 💻 코드 예제
 ConnectionTest.java
+```
+package com.test.java;
 
+import java.sql.Connection;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+public class ConnectionTest {
+    public static void main(String[] args) {
+        try {
+            Context initContext = new InitialContext();
+            Context envContext  = (Context)initContext.lookup("java:/comp/env");
+            DataSource ds = (DataSource)envContext.lookup("jdbc/oracle");
+
+            try (Connection conn = ds.getConnection()) {
+                System.out.println("DBCP 연결 성공: " + conn);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+UserDAO.java
+```
 package com.test.java.model;
 
 import java.sql.Connection;
@@ -104,10 +131,11 @@ public class UserDAO {
         }
     }
 }
-
+```
 
 DBCPTest.java
 
+```
 package com.test.java;
 
 import com.test.java.model.UserDAO;
@@ -119,14 +147,16 @@ public class DBCPTest {
     }
 }
 
+```
+
 🚀 실행 방법
 
-Tomcat 실행
+1. Tomcat 실행
 
-context.xml 설정 반영 확인
+2. context.xml 설정 반영 확인
 
-ConnectionTest → DB 연결 확인
+3. ConnectionTest → DB 연결 확인
 
-DBCPTest → DAO 실행 확인
+4. DBCPTest → DAO 실행 확인
 
 
